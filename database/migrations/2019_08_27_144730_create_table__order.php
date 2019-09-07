@@ -19,7 +19,7 @@ class CreateTableOrder extends Migration
             $table->unsignedBigInteger("product_id");
             $table->unsignedBigInteger("employees_id");
             $table->unsignedBigInteger("customer_id");
-           // $table->unsignedBigInteger("tableorder_id");
+            //$table->unsignedBigInteger("tableorder_id");
             $table->decimal("totalMoney");
             $table->date("date");
             $table->integer("status");

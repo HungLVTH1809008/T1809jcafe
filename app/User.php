@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    const ADMIN = 1;
+    const USER = 0;
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +38,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isAdmin(){
+        if($this->admin == self::ADMIN){
+            return true;
+        }
+        return false;
+    }
+//    public function getProducts(){
+//        return $this->belongsToMany("App\Product","user_product","user_id","product_id","id","product_id");
+//    }
 }

@@ -13,7 +13,7 @@ class CreateTableTableOrder extends Migration
      */
     public function up()
     {
-        Schema::create('TableOrder', function (Blueprint $table) {
+        Schema::create('Tableorder', function (Blueprint $table) {
             $table->bigIncrements('tableorder_id');
             $table->integer("seats");
             $table->integer("status");
@@ -29,6 +29,6 @@ class CreateTableTableOrder extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TableOrder');
+        Schema::dropIfExists('Tableorder');
     }
 }

@@ -18,11 +18,11 @@ class CreateTableProduct extends Migration
             $table->string("product_name");
             $table->unsignedBigInteger("category_id");
             $table->string("detail");
-            $table->decimal("price");
+            $table->float("price");
             $table->integer("status");
             $table->binary("images");
             $table->Date("date");
-            $table->decimal("priceNew");
+            $table->float("pricenew");
             $table->unsignedTinyInteger("active")->default(1);
             $table->timestamps();
         });

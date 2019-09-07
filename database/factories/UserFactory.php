@@ -41,23 +41,23 @@ $factory->define(App\Category::class, function (Faker $faker) {
     ];
 
 });
-//$factory->define(App\Product::class, function (Faker $faker) {
-//
-//    return [
-//
-//        'product_name' => $faker->name,
-//        'category_id' => $faker->randomFloat(0,1,10),
-//        'detail'=>$faker->jobTitle,
-//        'price' => $faker->randomFloat(0,1),
-//        'status'=>$faker->titleMale,
-//        'images' => $faker->image(),
-//        'date'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-//        'priceNew' => $faker->randomFloat(1,2),
-//
-//
-//    ];
-//
-//});
+$factory->define(App\Product::class, function (Faker $faker) {
+
+    return [
+
+        'product_name' => $faker->name,
+        'category_id' => $faker->randomFloat(0,1,50),
+        'detail'=>$faker->jobTitle,
+        'price' => $faker->randomNumber(1),
+        'status'=>$faker->numberBetween(1),
+        'images' => $faker->image(),
+        'date'=>$faker->date($format = 'Y-m-d', $max = 'now'),
+        'pricenew' => $faker->randomNumber(2)
+
+
+    ];
+
+});
 
 //$factory->define(App\Customer::class, function (Faker $faker) {
 //

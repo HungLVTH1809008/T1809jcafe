@@ -16,7 +16,7 @@ class Product extends Model
         'status',
         'images',
         'date',
-        'priceNew',
+        'pricenew',
         'active',
 
     ];

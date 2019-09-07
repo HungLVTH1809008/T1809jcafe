@@ -1,47 +1,52 @@
-{{--@extends("layout")--}}
+@extends("layout")
 
-{{--@section("main_content")--}}
+@section("main_content")
+    <table class="table table-hover">
+        @if(Session::has("success"))
+            <h1 class="text-center" style="color:green">{{ Session::get("success") }}</h1>
+        @endif
+        <h1 style="text-align: center;color: red">Product</h1>
+            <a href="{{url("/them_Product")}}" class="btn btn-primary">Thêm Product</a>
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category_id</th>
+        <th>Detail</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Images</th>
+        <th>Date</th>
+        <th>PriceNew</th>
+        <th>active</th>
+        <th>Action </th>
+        </thead>
+        <tbody>
 
-{{--    <table class="table table-hover">--}}
-{{--        <h1 style="text-align: center;color: red">Sanh dach Product</h1>--}}
-{{--        <thead>--}}
-{{--        <th>ID</th>--}}
-{{--        <th>Name</th>--}}
-{{--        <th>Category</th>--}}
-{{--        <th>Detail</th>--}}
-{{--        <th>Price</th>--}}
-{{--        <th>Status</th>--}}
-{{--        <th>Images</th>--}}
-{{--        <th>Date</th>--}}
-{{--        <th>PriceNew</th>--}}
-{{--        <th>Active</th>--}}
+        @foreach($products as $Product)
 
-{{--        </thead>--}}
+            <tr>
+                <td>{{$Product->product_id}}</td>
+                <td>{{$Product->product_name}}</td>
+                <td>{{$Product->category_id}}</td>
+                <td>{{$Product->detail}}</td>
+                <td>{{$Product->price}}</td>
+                <td>{{$Product->status}}</td>
+                <td>{{$Product->images}}</td>
+                <td>{{$Product->date}}</td>
+                <td>{{$Product->pricenew}}</td>
+                <td>{{$Product->active}}</td>
+                <td>
+                    <a class="btn btn-outline-danger" href="sua-product?id=<?php echo $Product->product_id; ?>">edit</a>
+                </td>
+                <td> <a class="btn btn-outline-danger" onclick="return confirm('Bạn chắc chắn muốn xóa??')"
+                        href="xoa-product/<?php echo $Product->product_id; ?>">delete</a></td>
+            </tr>
 
-{{--        <tbody>--}}
+        @endforeach
 
-{{--        @foreach($products as $Product)--}}
+        </tbody>
 
-{{--            <tr>--}}
-
-{{--                <td>{{$Product->product_id}}</td>--}}
-{{--                <td>{{$Product->product_name}}</td>--}}
-{{--                <td>{{$Product->category_id}}</td>--}}
-{{--                <td>{{$Product->detail}}</td>--}}
-{{--                <td>{{$Product->price}}</td>--}}
-{{--                <td>{{$Product->status}}</td>--}}
-{{--                <td>{{$Product->images}}</td>--}}
-{{--                <td>{{$Product->date}}</td>--}}
-{{--                <td>{{$Product->priceNew}}</td>--}}
-{{--                <td>{{$Product->active}}</td>--}}
-
-{{--            </tr>--}}
-
-{{--        @endforeach--}}
-
-{{--        </tbody>--}}
-
-{{--    </table>--}}
+    </table>
 
 
-{{--@endsection--}}
+@endsection

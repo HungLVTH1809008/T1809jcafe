@@ -23,23 +23,35 @@ Route::get("/quan_ly_employees","DemoController@EmployeesList");
 Route::get("/danhsach","MyController@danhsach");
 
 // Thêm dữ liệu
-Route::get('/them_Category',"MyController@them_Category");
-Route::post('/them_Category',"MyController@luucategory");
+Route::get('/them_Category',"MyController@them_Category")->middleware("auth");
 
-Route::get('/them_Product',"MyController@them_Product");
-Route::post('/them_Product',"MyController@luuproduct");
 
-Route::get('/them_Customer',"MyController@them_Customer");
-Route::post('/them_Customer',"MyController@luucustomer");
+Route::group(["middleware"=> "auth"],function (){
 
-Route::get('/them_Employees',"MyController@them_employees");
-Route::post('/them_Employees',"MyController@luuemployees");
+    Route::post('/them_Category',"MyController@luucategory");
+
+    Route::get('/them_Product',"MyController@them_Product");
+    Route::post('/them_Product',"MyController@luuproduct");
+
+    Route::get('/them_Customer',"MyController@them_Customer");
+    Route::post('/them_Customer',"MyController@luucustomer");
+
+    Route::get('/them_Employees',"MyController@them_employees");
+    Route::post('/them_Employees',"MyController@luuemployees");
 
 //sửa xóa dữ liệu
-Route::get('/xoa-category/{id}',"MyController@xoacategory");
-Route::get('/sua-category',"MyController@suacategory");
-Route::post('/sua-category',"MyController@updatecategory");
+    Route::get('/xoa-category/{id}',"MyController@xoacategory");
 
+    Route::get('/sua-category',"MyController@suacategory");
+    Route::post('/sua-category',"MyController@updatecategory");
+
+    Route::get('/xoa-product/{id}',"MyController@xoaproduct");
+
+    Route::get('/sua-product',"MyController@suaproduct");
+    Route::post('/sua-product',"MyController@updateproduct");
+
+
+});
 
 
 //Route::get('/chitietsanpham',"MyController@chitietsanpam");
@@ -50,3 +62,7 @@ Route::post('/sua-category',"MyController@updatecategory");
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
